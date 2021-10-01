@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "request-ip": "^2.1.3"
   }
 }
