@@ -35,4 +35,5 @@ INSERT INTO TB_GUEST VALUES
 - https://www.w3schools.com/sql/sql_foreignkey.asp
 - https://www.mysqltutorial.org/mysql-show-users/
 - https://www.w3schools.com/sql/sql_insert.asp
+https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
 */
