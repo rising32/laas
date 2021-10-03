@@ -1,5 +1,6 @@
 module.exports = app => {
 	const guest = require("../controller/guest.controller.js");
+	const staff = require("../controller/staff.controller.js");
 
 	app.get("/",(req,res) => {
 		res.json({
@@ -21,4 +22,5 @@ module.exports = app => {
 		
 	app.get("/guest", guest.getallguest);
 	app.get("/guest/:username", guest.geteachguest);
+	app.get("/staff", staff.getallstaff);	
 };
