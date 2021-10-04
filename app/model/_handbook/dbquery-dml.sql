@@ -1,10 +1,19 @@
 USE laas;
 
-CREATE TABLE IF NOT EXISTS TB_ITEM (
-	item_id VARCHAR(5) NOT NULL PRIMARY KEY,
-	item_name TEXT NOT NULL,
-	item_price DECIMAL(7,2) NOT NULL
+CREATE TABLE IF NOT EXISTS TB_SERVICE (
+	service_id VARCHAR(3) NOT NULL PRIMARY KEY,
+	service_name VARCHAR(10) NOT NULL
 );
+
+INSERT INTO TB_SERVICE VALUES
+("CCI","Cuci"),
+("STR","Setrika"),
+("DRY","Dry Clean");
+
+INSERT INTO TB_TIMING VALUES
+("REG","Reguler 3D"),
+("EX2","Express 2D"),
+("EX1","Express 1D");
 
 INSERT INTO TB_ITEM VALUES
 ("PKN","Pakaian",8000.00),
@@ -35,5 +44,6 @@ INSERT INTO TB_GUEST VALUES
 - https://www.w3schools.com/sql/sql_foreignkey.asp
 - https://www.mysqltutorial.org/mysql-show-users/
 - https://www.w3schools.com/sql/sql_insert.asp
-https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
+- https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
+- https://www.w3schools.com/php/php_mysql_delete.asp
 */
