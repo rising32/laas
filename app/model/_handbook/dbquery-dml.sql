@@ -32,6 +32,7 @@ INSERT INTO TB_STAFF VALUES
 ("admin1",CONCAT('staff_',SHA1(UNHEX(SHA1('irsyadndu1ABC')))),"Muhammad Nur Irsyad","081318420901","hotpotcookie@gmail.com","Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat","12520","super",1,NOW(),NOW());
 
 INSERT INTO TB_GUEST VALUES
+("haspulqadir","Muhammad H. Qadir","081318420901","Jl. Aganis Blok A B20, Mampang Prapatan","12730",1,NOW(),NOW()),
 ("haspul","Haspul Naser","082125337746","Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat","12520",1,NOW(),NOW()),
 ("hanip","Hanif Salsabil Kusumaditya",NULL,NULL,NULL,1,NOW(),NOW());
 
