@@ -1,5 +1,16 @@
+const path = require("path");
+const logs = require("log4js");
 const Guest = require("../model/guest.model.js");
-
+// ---------------------------------------
+logs.configure({
+	appenders: { 
+  		error: { type: "file", filename: path.join(__dirname,"../../log/error.log") }, 
+  		get_request: { type: "file", filename: path.join(__dirname,"../../log/get-request.log") } },
+  	categories: { 
+  		default: { appenders: ["error"], level: "error" },
+  		get_request: { appenders: ["get_request"], level: "debug" } }
+});
+// ---------------------------------------
 exports.getallguest = (req,res) => {
 	Guest.getallguest((err,data) => {
 		if (err) { res.status(500).send({ message: err.message }); }
@@ -15,6 +26,17 @@ exports.geteachguest = (req,res) => {
 		if (err) { res.status(500).send({ message: err.message }); }
 		else {
 			console.log("[nodemon] retrieving a guest by username ..."+req.connection.remoteAddress+"\n",data);			
+			res.send(data);
+		}
+	});
+};
+
+exports.getregexguest = (req,res) => {
+	logs.getLogger("get_request").debug("issued-client: "+req.connection.remoteAddress);						
+	Guest.getregexguest(req.params.username, (err,data) => {
+		if (err) { res.status(500).send({ message: err.message }); }
+		else {
+			console.log("[nodemon] retrieving guests by username wildcard ..."+req.connection.remoteAddress+"\n",data);
 			res.send(data);
 		}
 	});
