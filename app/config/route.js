@@ -23,5 +23,13 @@ module.exports = app => {
 	app.get("/guest", guest.getallguest);
 	app.get("/guest/:username", guest.geteachguest);
 	app.get("/guest/search/:username", guest.getregexguest);	
-	app.get("/staff", staff.getallstaff);	
+	app.get("/staff", staff.getallstaff);
+	app.get("/staff/:username", staff.geteachstaff);	
+
+	/* NEXT ROUTE: CRUD
+	-------------------
+	-
+	-
+	-
+	*/
 };
