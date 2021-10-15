@@ -1,0 +1,32 @@
+[2021-10-15T13:07:44.600] [DEBUG] GET - 192.168.1.8/guest/search/has ::ffff:192.168.1.8
+[2021-10-15T13:07:44.614] [DEBUG] GET - [ RowDataPacket {
+    username: 'haspul',
+    full_name: 'Haspul Naser',
+    phone: '082125337746',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    activation: 1,
+    created_at: 2021-10-01T07:45:47.000Z,
+    updated_at: 2021-10-01T07:45:47.000Z },
+  RowDataPacket {
+    username: 'haspulqadir',
+    full_name: 'Muhammad H. Qadir',
+    phone: '081318420901',
+    address: 'Jl. Aganis Blok A B20, Mampang Prapatan',
+    postal_code: '12730',
+    activation: 1,
+    created_at: 2021-10-14T06:53:29.000Z,
+    updated_at: 2021-10-14T06:53:29.000Z } ]
+[2021-10-15T13:08:24.702] [DEBUG] GET - 192.168.1.8/staff ::ffff:192.168.1.8
+[2021-10-15T13:08:24.710] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: 2021-10-02T07:25:37.000Z,
+    updated_at: 2021-10-02T07:25:37.000Z } ]
