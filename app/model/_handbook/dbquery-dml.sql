@@ -1,9 +1,25 @@
 USE laas;
+ALTER TABLE TB_LAUNDRY_LOG AUTO_INCREMENT = 1;
 
-CREATE TABLE IF NOT EXISTS TB_SERVICE (
-	service_id VARCHAR(3) NOT NULL PRIMARY KEY,
-	service_name VARCHAR(10) NOT NULL
+CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_DETAILS (
+	order_no INT NOT NULL,
+	item_id VARCHAR(8) NOT NULL,
+	service_id VARCHAR(3) NOT NULL,
+	timing_id VARCHAR(3) NOT NULL,
+	qty DECIMAL(5,3) NOT NULL,
+	FOREIGN KEY (order_no) REFERENCES TB_LAUNDRY_LOG(order_no),
+	FOREIGN KEY (item_id) REFERENCES TB_ITEM(item_id),
+	FOREIGN KEY (service_id) REFERENCES TB_SERVICE(service_id),
+	FOREIGN KEY (timing_id) REFERENCES TB_TIMING(timing_id)
 );
+
+INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
+(1,"PKN","CCI","REG",1.700),
+(1,"SPR-M","CCI","REG",1.000),
+(1,"BDC-S","CCI","REG",1.000);
+
+INSERT INTO TB_LAUNDRY_LOG VALUES 
+(NULL,CURDATE(),DATE_ADD(CURDATE(),interval 3 day),NULL,"hanip","admin1",0);
 
 INSERT INTO TB_SERVICE VALUES
 ("CCI","Cuci"),
@@ -36,6 +52,18 @@ INSERT INTO TB_GUEST VALUES
 ("haspul","Haspul Naser","082125337746","Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat","12520",1,NOW(),NOW()),
 ("hanip","Hanif Salsabil Kusumaditya",NULL,NULL,NULL,1,NOW(),NOW());
 
+/*
+- Timing:
+	1. Regular   : Baseprice * 1.000 = Temp (REG)
+	2. Express 1 : Baseprice * 1.125 = Temp (EX1)
+	3. Express 2 : Baseprice * 1.625 = Temp (EX2)
+- Service
+	1. Cuci	     : Temp * 1.000 = Total (CCI)
+	2. Setrika   : Temp * 0.812 = Total (STR)
+	3. Dry Clean : Temp * 1.000 = Total (DRY)
+*/
+
+
 /* REFERENCES
 -------------
 - https://www.mysqltutorial.org/mysql-datetime/
@@ -44,7 +72,4 @@ INSERT INTO TB_GUEST VALUES
 - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
 - https://www.w3schools.com/sql/sql_foreignkey.asp
 - https://www.mysqltutorial.org/mysql-show-users/
-- https://www.w3schools.com/sql/sql_insert.asp
-- https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
-- https://www.w3schools.com/php/php_mysql_delete.asp
 */
