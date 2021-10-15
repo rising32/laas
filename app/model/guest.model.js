@@ -15,11 +15,11 @@ const Validation = require("../config/validation.js");
 // ---------------------------------------
 logs.configure({
 	appenders: { 
-  		error: { type: "file", filename: path.join(__dirname,"../../log/error.log") }, 
-  		get_request: { type: "file", filename: path.join(__dirname,"../../log/get-request.log") } },
+  		ERR: { type: "file", filename: path.join(__dirname,"../../log/error.log") }, 
+  		GET: { type: "file", filename: path.join(__dirname,"../../log/get-request.log") } },
   	categories: { 
-  		default: { appenders: ["error"], level: "error" },
-  		get_request: { appenders: ["get_request"], level: "debug" } }
+  		default: { appenders: ["ERR"], level: "error" },
+  		GET: { appenders: ["GET"], level: "debug" } }
 });
 // ---------------------------------------
 Guest.getallguest = (result) => {
@@ -30,18 +30,21 @@ Guest.getallguest = (result) => {
 			result(null,err);
 			return;
 		}
+		logs.getLogger("GET").debug(res);		
 		result(null,res);
 	});
 };
 
 Guest.geteachguest = (username,result) => {
-	sql.query("SELECT * FROM TB_GUEST WHERE username=?",username,(err,res) => {
+	var fixed_username = Validation.sanitizeWord(username,0);	
+	sql.query("SELECT * FROM TB_GUEST WHERE username=?",fixed_username,(err,res) => {
 		if (err) {
 			console.log("[nodemon] "+err);
 			logs.getLogger("error").error(err);			
 			result(null,err);
 			return;
 		}
+		logs.getLogger("GET").debug(res);		
 		result(null,res);
 	});
 };
@@ -52,11 +55,11 @@ Guest.getregexguest = (username,result) => {
 	sql.query("SELECT * FROM TB_GUEST WHERE username LIKE ?","%"+fixed_username+"%",(err,res) => {
 		if (err) {
 			console.log("[nodemon] "+err);
+			logs.getLogger("error").error(err);						
 			result(null,err);
 			return;
 		}
-		logs.getLogger("get_request").debug("username: "+username+" >> "+fixed_username);				
-		logs.getLogger("get_request").debug(res);		
+		logs.getLogger("GET").debug(res);		
 		result(null,res);
 	});
 };
