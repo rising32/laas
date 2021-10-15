@@ -4,14 +4,15 @@ const Guest = require("../model/guest.model.js");
 // ---------------------------------------
 logs.configure({
 	appenders: { 
-  		error: { type: "file", filename: path.join(__dirname,"../../log/error.log") }, 
-  		get_request: { type: "file", filename: path.join(__dirname,"../../log/get-request.log") } },
+  		ERR: { type: "file", filename: path.join(__dirname,"../../log/error.log") }, 
+  		GET: { type: "file", filename: path.join(__dirname,"../../log/get-request.log") } },
   	categories: { 
-  		default: { appenders: ["error"], level: "error" },
-  		get_request: { appenders: ["get_request"], level: "debug" } }
+  		default: { appenders: ["ERR"], level: "error" },
+  		GET: { appenders: ["GET"], level: "debug" } }
 });
 // ---------------------------------------
 exports.getallguest = (req,res) => {
+	logs.getLogger("GET").debug(req.host+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
 	Guest.getallguest((err,data) => {
 		if (err) { res.status(500).send({ message: err.message }); }
 		else {
@@ -22,6 +23,7 @@ exports.getallguest = (req,res) => {
 };
 
 exports.geteachguest = (req,res) => {
+	logs.getLogger("GET").debug(req.host+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
 	Guest.geteachguest(req.params.username, (err,data) => {
 		if (err) { res.status(500).send({ message: err.message }); }
 		else {
@@ -32,7 +34,7 @@ exports.geteachguest = (req,res) => {
 };
 
 exports.getregexguest = (req,res) => {
-	logs.getLogger("get_request").debug("issued-client: "+req.connection.remoteAddress);						
+	logs.getLogger("GET").debug(req.host+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
 	Guest.getregexguest(req.params.username, (err,data) => {
 		if (err) { res.status(500).send({ message: err.message }); }
 		else {
