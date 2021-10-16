@@ -1,17 +1,20 @@
 USE laas;
 ALTER TABLE TB_LAUNDRY_LOG AUTO_INCREMENT = 1;
 
-CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_DETAILS (
+DELETE FROM TB_LAUNDRY_LOG_DETAILS WHERE 1;
+DELETE FROM TB_LAUNDRY_LOG_PROGRESS WHERE 1;
+DELETE FROM TB_LAUNDRY_LOG WHERE 1;
+
+CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_PROGRESS (
 	order_no INT NOT NULL,
-	item_id VARCHAR(8) NOT NULL,
-	service_id VARCHAR(3) NOT NULL,
-	timing_id VARCHAR(3) NOT NULL,
-	qty DECIMAL(5,3) NOT NULL,
+	progress_id VARCHAR(3) NOT NULL,
+	updated_at DATETIME NOT NULL,
 	FOREIGN KEY (order_no) REFERENCES TB_LAUNDRY_LOG(order_no),
-	FOREIGN KEY (item_id) REFERENCES TB_ITEM(item_id),
-	FOREIGN KEY (service_id) REFERENCES TB_SERVICE(service_id),
-	FOREIGN KEY (timing_id) REFERENCES TB_TIMING(timing_id)
+	FOREIGN KEY (progress_id) REFERENCES TB_PROGRESS(progress_id)	
 );
+
+INSERT INTO TB_LAUNDRY_LOG_PROGRESS VALUES
+(1,"PCK",NOW());
 
 INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
 (1,"PKN","CCI","REG",1.700),
@@ -19,7 +22,15 @@ INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
 (1,"BDC-S","CCI","REG",1.000);
 
 INSERT INTO TB_LAUNDRY_LOG VALUES 
-(NULL,CURDATE(),DATE_ADD(CURDATE(),interval 3 day),NULL,"hanip","admin1",0);
+(NULL,CURDATE(),DATE_ADD(CURDATE(),interval 3 day),NULL,"hanip","admin1",50000.00);
+
+INSERT INTO TB_PROGRESS VALUES
+("DRY","Dry Cleaning"),
+("QEU","Qeue"),
+("WSH","Washing"),
+("IRO","Ironing"),
+("PCK","Packing"),
+("FIN","Finished");
 
 INSERT INTO TB_SERVICE VALUES
 ("CCI","Cuci"),
@@ -63,7 +74,6 @@ INSERT INTO TB_GUEST VALUES
 	3. Dry Clean : Temp * 1.000 = Total (DRY)
 */
 
-
 /* REFERENCES
 -------------
 - https://www.mysqltutorial.org/mysql-datetime/
@@ -72,4 +82,8 @@ INSERT INTO TB_GUEST VALUES
 - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
 - https://www.w3schools.com/sql/sql_foreignkey.asp
 - https://www.mysqltutorial.org/mysql-show-users/
+- https://www.w3schools.com/sql/sql_insert.asp
+- https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
+- https://www.w3schools.com/php/php_mysql_delete.asp
+- https://www.tutorialspoint.com/mysql-add-days-to-a-date
 */
