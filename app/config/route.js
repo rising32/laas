@@ -22,14 +22,14 @@ module.exports = app => {
 		
 	app.get("/guest", guest.getallguest);
 	app.get("/guest/:username", guest.geteachguest);
-	app.get("/guest/search/:username", guest.getregexguest);	
+	app.get("/guest/search/:username", guest.getregexguest);
 	app.get("/staff", staff.getallstaff);
 	app.get("/staff/:username", staff.geteachstaff);	
 
-	/* NEXT ROUTE: CRUD
+	/* NEXT ROUTE: Transaction
 	-------------------
-	-
-	-
-	-
-	*/
+	- app.get("/guest/:username/laundry/",..) # order by desc
+	- app.get("/guest/:username/laundry/detail/:order_no",..) # order by desc
+	- app.get("/guest/:username/laundry/progress/:order_no",..) 
+	*/ 
 };
