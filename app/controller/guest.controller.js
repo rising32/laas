@@ -43,3 +43,14 @@ exports.getregexguest = (req,res) => {
 		}
 	});
 };
+
+exports.getguesttransaction = (req,res) => {
+	logs.getLogger("GET").debug(req.host+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
+	Guest.getguesttransaction(req.params.username, (err,data) => {
+		if (err) { res.status(500).send({ message: err.message }); }
+		else {
+			console.log("[nodemon] getting guest transaction ..."+req.connection.remoteAddress+"\n",data);
+			res.send(data);
+		}
+	});
+};
