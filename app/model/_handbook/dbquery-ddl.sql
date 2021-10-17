@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_PROGRESS (
 	order_no INT NOT NULL,
 	progress_id VARCHAR(3) NOT NULL,
 	updated_at DATETIME NOT NULL,
+	add_info TEXT NULL,
 	FOREIGN KEY (order_no) REFERENCES TB_LAUNDRY_LOG(order_no),
 	FOREIGN KEY (progress_id) REFERENCES TB_PROGRESS(progress_id)	
 );
@@ -87,11 +88,11 @@ CREATE TRIGGER TR_NEW_PROGRESS
 	ON TB_LAUNDRY_LOG FOR EACH ROW
 	BEGIN
 		INSERT INTO TB_LAUNDRY_LOG_PROGRESS VALUES
-		(NEW.order_no,"QEU",NOW());
+		(NEW.order_no,"QEU",NOW(),NULL);
 	END; //
 DELIMITER ;
 
-CREATE OR REPLACE VIEW VW_USER_PROGRESS AS
+CREATE OR REPLACE VIEW VW_USER_TRANSACTION_PROGRESS AS
 	SELECT LL.order_no, G.username AS guest_username, G.full_name AS guest_full_name, P.progress_name, LLP.updated_at
 	FROM TB_LAUNDRY_LOG_PROGRESS AS LLP
 	INNER JOIN TB_LAUNDRY_LOG AS LL ON LLP.order_no = LL.order_no
@@ -105,7 +106,7 @@ CREATE OR REPLACE VIEW VW_USER_TRANSACTION AS
 	IF (LL.payment_nominal < SUM(VW.total_price),0.00,(LL.payment_nominal - SUM(VW.total_price))) AS payment_change,
 	(
 		SELECT VWP.progress_name 
-		FROM VW_USER_PROGRESS VWP 
+		FROM VW_USER_TRANSACTION_PROGRESS VWP 
 		WHERE VWP.order_no = LL.order_no 
 		ORDER BY updated_at DESC 
 		LIMIT 1

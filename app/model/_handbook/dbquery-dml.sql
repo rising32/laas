@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_PROGRESS (
 );
 
 INSERT INTO TB_LAUNDRY_LOG_PROGRESS VALUES
-(1,"PCK",NOW());
+(1,"QUE",NOW(),NULL);
 
 INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
 (1,"PKN","CCI","REG",1.700),
@@ -22,15 +22,17 @@ INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
 (1,"BDC-S","CCI","REG",1.000);
 
 INSERT INTO TB_LAUNDRY_LOG VALUES 
-(NULL,CURDATE(),DATE_ADD(CURDATE(),interval 3 day),NULL,"hanip","admin1",50000.00);
+(NULL,NOW(),NOW() + INTERVAL 3 DAY,NULL,"hanip","admin1",50000.00);
 
 INSERT INTO TB_PROGRESS VALUES
+("DLV","Delivering"),
+("RDY","Ready"),
+("DNE","Finished"),
 ("DRY","Dry Cleaning"),
-("QEU","Qeue"),
+("QEU","Qeueing"),
 ("WSH","Washing"),
 ("IRO","Ironing"),
-("PCK","Packing"),
-("FIN","Finished");
+("PCK","Packing");
 
 INSERT INTO TB_SERVICE VALUES
 ("CCI","Cuci"),
