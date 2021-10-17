@@ -30,3 +30,60 @@
     activation: 1,
     created_at: 2021-10-02T07:25:37.000Z,
     updated_at: 2021-10-02T07:25:37.000Z } ]
+[2021-10-17T21:43:33.505] [DEBUG] GET - 192.168.1.8/guest/hanip ::ffff:192.168.1.8
+[2021-10-17T21:43:33.516] [DEBUG] GET - [ RowDataPacket {
+    username: 'hanip',
+    full_name: 'Hanif Salsabil Kusumaditya',
+    phone: null,
+    address: null,
+    postal_code: null,
+    activation: 1,
+    created_at: 2021-10-01T07:48:11.000Z,
+    updated_at: 2021-10-01T07:48:11.000Z } ]
+[2021-10-17T21:45:22.217] [DEBUG] GET - 192.168.1.8/guest/hanip/transaction ::ffff:192.168.1.8
+[2021-10-17T21:45:22.231] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    drop_in_item: 2021-10-16T17:00:00.000Z,
+    drop_off_item: 2021-10-19T17:00:00.000Z,
+    pick_up_item: null,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    guest_phone: null,
+    staff_full_name: 'Muhammad Nur Irsyad',
+    staff_phone: '081318420901',
+    payment_total: 48600,
+    payment_nominal: 50000,
+    payment_change: 1400,
+    progress_name: 'Qeueing' } ]
+[2021-10-17T21:48:11.839] [DEBUG] GET - 192.168.1.8/guest/hanip/transaction ::ffff:192.168.1.8
+[2021-10-17T21:48:11.851] [DEBUG] GET - []
+[2021-10-17T21:50:35.994] [DEBUG] GET - 192.168.1.8/guest/hanip/transaction ::ffff:192.168.1.8
+[2021-10-17T21:50:36.005] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    drop_in_item: 2021-10-16T17:00:00.000Z,
+    drop_off_item: 2021-10-19T17:00:00.000Z,
+    pick_up_item: null,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    guest_phone: null,
+    staff_full_name: 'Muhammad Nur Irsyad',
+    staff_phone: '081318420901',
+    payment_total: 48600,
+    payment_nominal: 50000,
+    payment_change: 1400,
+    progress_name: 'Qeueing' } ]
+[2021-10-17T22:11:25.062] [DEBUG] GET - 192.168.1.8/staff ::ffff:192.168.1.8
+[2021-10-17T22:11:25.071] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: 2021-10-02T07:25:37.000Z,
+    updated_at: 2021-10-02T07:25:37.000Z } ]
+[2021-10-17T22:11:30.628] [DEBUG] GET - 192.168.1.8/guest/hanip/transaction ::ffff:192.168.1.8
+[2021-10-17T22:11:30.642] [DEBUG] GET - []
