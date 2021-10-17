@@ -64,4 +64,20 @@ Guest.getregexguest = (username,result) => {
 	});
 };
 
+Guest.getguesttransaction = (username,result) => {
+	var fixed_username = Validation.sanitizeWord(username,0); 
+	console.log("[nodemon] username: "+username+" >> "+fixed_username);	
+	sql.query("SELECT * FROM VW_USER_TRANSACTION WHERE guest_username=?",fixed_username,(err,res) => {
+		if (err) {
+			console.log("[nodemon] "+err);
+			logs.getLogger("error").error(err);						
+			result(null,err);
+			return;
+		}
+		logs.getLogger("GET").debug(res);		
+		result(null,res);
+	});
+};
+
+
 module.exports = Guest;
