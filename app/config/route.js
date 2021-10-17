@@ -23,13 +23,18 @@ module.exports = app => {
 	app.get("/guest", guest.getallguest);
 	app.get("/guest/:username", guest.geteachguest);
 	app.get("/guest/search/:username", guest.getregexguest);
+
+	app.get("/guest/:username/transaction", guest.getguesttransaction); // (user_transaction)
+//	app.get("/guest/:username/transaction/:order_no/details", guest.);	// (user_transaction_details)
+//	app.get("/guest/:username/transaction/:order_no/progress", guest.);	// (user_progress)
+
 	app.get("/staff", staff.getallstaff);
 	app.get("/staff/:username", staff.geteachstaff);	
 
 	/* NEXT ROUTE: Transaction
 	-------------------
-	- app.get("/guest/:username/laundry/",..) # order by desc
-	- app.get("/guest/:username/laundry/detail/:order_no",..) # order by desc
-	- app.get("/guest/:username/laundry/progress/:order_no",..) 
+	- app.get("/guest/:username/laundry/",..)                   # (user_transaction) order by desc
+	- app.get("/guest/:username/laundry/detail/:order_no",..)   # (user_transaction_details) order by desc
+	- app.get("/guest/:username/laundry/progress/:order_no",..) # (user_progress)
 	*/ 
 };
