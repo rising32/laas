@@ -79,5 +79,36 @@ Guest.getguesttransaction = (username,result) => {
 	});
 };
 
+Guest.getguesttransaction_details = (username,order_no,result) => {
+	var fixed_username = Validation.sanitizeWord(username,0);
+	var fixed_order_no = Validation.sanitizeWord(order_no,0);
+	console.log("[nodemon] username: "+username+" >> "+fixed_username);	
+	sql.query("SELECT * FROM VW_USER_TRANSACTION_DETAILS WHERE guest_username=? AND order_no=?",[fixed_username,fixed_order_no],(err,res) => {
+		if (err) {
+			console.log("[nodemon] "+err);
+			logs.getLogger("error").error(err);						
+			result(null,err);
+			return;
+		}
+		logs.getLogger("GET").debug(res);		
+		result(null,res);
+	});
+};
+
+Guest.getguesttransaction_progress = (username,order_no,result) => {
+	var fixed_username = Validation.sanitizeWord(username,0);
+	var fixed_order_no = Validation.sanitizeWord(order_no,0);
+	console.log("[nodemon] username: "+username+" >> "+fixed_username);	
+	sql.query("SELECT * FROM VW_USER_TRANSACTION_PROGRESS WHERE guest_username=? AND order_no=?",[fixed_username,fixed_order_no],(err,res) => {
+		if (err) {
+			console.log("[nodemon] "+err);
+			logs.getLogger("error").error(err);						
+			result(null,err);
+			return;
+		}
+		logs.getLogger("GET").debug(res);		
+		result(null,res);
+	});
+};
 
 module.exports = Guest;
