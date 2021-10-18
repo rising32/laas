@@ -87,3 +87,368 @@
     updated_at: 2021-10-02T07:25:37.000Z } ]
 [2021-10-17T22:11:30.628] [DEBUG] GET - 192.168.1.8/guest/hanip/transaction ::ffff:192.168.1.8
 [2021-10-17T22:11:30.642] [DEBUG] GET - []
+[2021-10-18T10:23:21.518] [DEBUG] GET - 192.168.43.219/staff ::ffff:192.168.43.219
+[2021-10-18T10:23:21.527] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: '18-10-2021 10:15:59',
+    updated_at: '18-10-2021 10:15:59' } ]
+[2021-10-18T10:28:00.620] [DEBUG] GET - 192.168.43.219/guest ::ffff:192.168.43.219
+[2021-10-18T10:28:00.624] [DEBUG] GET - [ RowDataPacket {
+    username: 'hanip',
+    full_name: 'Hanif Salsabil Kusumaditya',
+    phone: null,
+    address: null,
+    postal_code: null,
+    activation: 1,
+    created_at: '18-10-2021 10:27:52',
+    updated_at: '18-10-2021 10:27:52' },
+  RowDataPacket {
+    username: 'haspul',
+    full_name: 'Haspul Naser',
+    phone: '082125337746',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    activation: 1,
+    created_at: '18-10-2021 10:27:52',
+    updated_at: '18-10-2021 10:27:52' },
+  RowDataPacket {
+    username: 'haspulqadir',
+    full_name: 'Muhammad H. Qadir',
+    phone: '081318420901',
+    address: 'Jl. Aganis Blok A B20, Mampang Prapatan',
+    postal_code: '12730',
+    activation: 1,
+    created_at: '18-10-2021 10:27:52',
+    updated_at: '18-10-2021 10:27:52' } ]
+[2021-10-18T10:59:13.759] [DEBUG] GET - 192.168.43.219/staff ::ffff:192.168.43.219
+[2021-10-18T10:59:13.763] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: '2021-10-18 10:59:03',
+    updated_at: '2021-10-18 10:59:03' } ]
+[2021-10-18T10:59:25.598] [DEBUG] GET - 192.168.43.219/guest ::ffff:192.168.43.219
+[2021-10-18T10:59:25.600] [DEBUG] GET - [ RowDataPacket {
+    username: 'hanip',
+    full_name: 'Hanif Salsabil Kusumaditya',
+    phone: null,
+    address: null,
+    postal_code: null,
+    activation: 1,
+    created_at: '18-10-2021 10:59:03',
+    updated_at: '2021-10-18 10:59:03' },
+  RowDataPacket {
+    username: 'haspul',
+    full_name: 'Haspul Naser',
+    phone: '082125337746',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    activation: 1,
+    created_at: '2021-10-18 10:59:03',
+    updated_at: '2021-10-18 10:59:03' },
+  RowDataPacket {
+    username: 'haspulqadir',
+    full_name: 'Muhammad H. Qadir',
+    phone: '081318420901',
+    address: 'Jl. Aganis Blok A B20, Mampang Prapatan',
+    postal_code: '12730',
+    activation: 1,
+    created_at: '2021-10-18 10:59:03',
+    updated_at: '2021-10-18 10:59:03' } ]
+[2021-10-18T13:08:04.261] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction ::ffff:192.168.43.219
+[2021-10-18T13:08:04.277] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    drop_in_item: 2021-10-17T17:00:00.000Z,
+    drop_off_item: 2021-10-20T17:00:00.000Z,
+    pick_up_item: null,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    guest_phone: null,
+    staff_full_name: 'Muhammad Nur Irsyad',
+    staff_phone: '081318420901',
+    payment_total: 48600,
+    payment_nominal: 50000,
+    payment_change: 1400,
+    progress_name: 'Washing' } ]
+[2021-10-18T13:18:30.642] [DEBUG] GET - 192.168.43.219/guest/ ::ffff:192.168.43.219
+[2021-10-18T13:18:30.649] [DEBUG] GET - [ RowDataPacket {
+    username: 'hanip',
+    full_name: 'Hanif Salsabil Kusumaditya',
+    phone: null,
+    address: null,
+    postal_code: null,
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z },
+  RowDataPacket {
+    username: 'haspul',
+    full_name: 'Haspul Naser',
+    phone: '082125337746',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z },
+  RowDataPacket {
+    username: 'haspulqadir',
+    full_name: 'Muhammad H. Qadir',
+    phone: '081318420901',
+    address: 'Jl. Aganis Blok A B20, Mampang Prapatan',
+    postal_code: '12730',
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z } ]
+[2021-10-18T13:18:45.471] [DEBUG] GET - 192.168.43.219/staff ::ffff:192.168.43.219
+[2021-10-18T13:18:45.475] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: 2021-10-18T06:18:10.000Z,
+    updated_at: 2021-10-18T06:18:10.000Z } ]
+[2021-10-18T13:28:26.703] [DEBUG] GET - 192.168.43.219/staff ::ffff:192.168.43.219
+[2021-10-18T13:28:26.714] [DEBUG] GET - [ RowDataPacket {
+    username: 'admin1',
+    password: 'staff_81afb89066e28a30e94710a9e067213656100b95',
+    full_name: 'Muhammad Nur Irsyad',
+    phone: '081318420901',
+    email: 'hotpotcookie@gmail.com',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    level: 'super',
+    activation: 1,
+    created_at: 2021-10-18T06:18:10.000Z,
+    updated_at: 2021-10-18T06:18:10.000Z } ]
+[2021-10-18T13:28:32.862] [DEBUG] GET - 192.168.43.219/guest ::ffff:192.168.43.219
+[2021-10-18T13:28:32.866] [DEBUG] GET - [ RowDataPacket {
+    username: 'hanip',
+    full_name: 'Hanif Salsabil Kusumaditya',
+    phone: null,
+    address: null,
+    postal_code: null,
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z },
+  RowDataPacket {
+    username: 'haspul',
+    full_name: 'Haspul Naser',
+    phone: '082125337746',
+    address: 'Jl. Siaga Raya Komp. LAN, C13, Pejaten Barat',
+    postal_code: '12520',
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z },
+  RowDataPacket {
+    username: 'haspulqadir',
+    full_name: 'Muhammad H. Qadir',
+    phone: '081318420901',
+    address: 'Jl. Aganis Blok A B20, Mampang Prapatan',
+    postal_code: '12730',
+    activation: 1,
+    created_at: 2021-10-18T06:18:16.000Z,
+    updated_at: 2021-10-18T06:18:16.000Z } ]
+[2021-10-18T13:28:44.263] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction ::ffff:192.168.43.219
+[2021-10-18T13:28:44.281] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    drop_in_item: 2021-10-17T17:00:00.000Z,
+    drop_off_item: 2021-10-20T17:00:00.000Z,
+    pick_up_item: null,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    guest_phone: null,
+    staff_full_name: 'Muhammad Nur Irsyad',
+    staff_phone: '081318420901',
+    payment_total: 64600,
+    payment_nominal: 100000,
+    payment_change: 35400,
+    progress_name: 'Washing' } ]
+[2021-10-18T13:36:55.424] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T13:39:41.088] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T13:42:21.503] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T13:42:21.518] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    item_name: 'Pakaian',
+    item_price: 8000,
+    qty: 3.7,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 29600 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    item_name: 'Sprei Sedang (M)',
+    item_price: 15000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 15000 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    item_name: 'Berdcover Kecil (S)',
+    item_price: 20000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 20000 } ]
+[2021-10-18T13:49:23.038] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T13:49:23.043] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Pakaian',
+    item_price: 8000,
+    qty: 3.7,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 29600 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Sprei Sedang (M)',
+    item_price: 15000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 15000 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Berdcover Kecil (S)',
+    item_price: 20000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 20000 } ]
+[2021-10-18T13:50:02.491] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T13:50:02.504] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Pakaian',
+    item_price: 8000,
+    qty: 3.7,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 29600 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Sprei Sedang (M)',
+    item_price: 15000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 15000 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Berdcover Kecil (S)',
+    item_price: 20000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 20000 } ]
+[2021-10-18T14:04:50.239] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/details ::ffff:192.168.43.219
+[2021-10-18T14:04:50.258] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Pakaian',
+    item_price: 8000,
+    qty: 3.7,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 29600 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Sprei Sedang (M)',
+    item_price: 15000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 15000 },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    item_name: 'Berdcover Kecil (S)',
+    item_price: 20000,
+    qty: 1,
+    service_name: 'Cuci',
+    timing_name: 'Reguler 3D',
+    total_price: 20000 } ]
+[2021-10-18T14:04:56.427] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/progress ::ffff:192.168.43.219
+[2021-10-18T14:04:56.433] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Qeueing',
+    updated_at: 2021-10-18T06:23:56.000Z },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Washing',
+    updated_at: 2021-10-18T06:27:35.000Z },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Qeueing',
+    updated_at: 2021-10-18T06:53:54.000Z } ]
+[2021-10-18T14:05:29.829] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/1/progress ::ffff:192.168.43.219
+[2021-10-18T14:05:29.835] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Qeueing',
+    updated_at: 2021-10-18T06:23:56.000Z },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Washing',
+    updated_at: 2021-10-18T06:27:35.000Z },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Qeueing',
+    updated_at: 2021-10-18T06:53:54.000Z },
+  RowDataPacket {
+    order_no: 1,
+    guest_username: 'hanip',
+    progress_name: 'Drying',
+    updated_at: 2021-10-18T07:05:27.000Z } ]
+[2021-10-18T14:06:10.380] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction/2/progress ::ffff:192.168.43.219
+[2021-10-18T14:06:10.383] [DEBUG] GET - []
+[2021-10-18T14:09:36.499] [DEBUG] GET - 192.168.43.219/guest/hanip/transaction ::ffff:192.168.43.219
+[2021-10-18T14:09:36.517] [DEBUG] GET - [ RowDataPacket {
+    order_no: 1,
+    drop_in_item: 2021-10-17T17:00:00.000Z,
+    drop_off_item: 2021-10-20T17:00:00.000Z,
+    pick_up_item: null,
+    guest_username: 'hanip',
+    guest_full_name: 'Hanif Salsabil Kusumaditya',
+    guest_phone: null,
+    staff_full_name: 'Muhammad Nur Irsyad',
+    staff_phone: '081318420901',
+    payment_total: 64600,
+    payment_nominal: 100000,
+    payment_change: 35400,
+    progress_name: 'Drying' } ]
