@@ -4,6 +4,8 @@ ALTER TABLE TB_LAUNDRY_LOG AUTO_INCREMENT = 1;
 DELETE FROM TB_LAUNDRY_LOG_DETAILS WHERE 1;
 DELETE FROM TB_LAUNDRY_LOG_PROGRESS WHERE 1;
 DELETE FROM TB_LAUNDRY_LOG WHERE 1;
+DELETE FROM TB_STAFF WHERE 1;
+DELETE FROM TB_GUEST WHERE 1;
 
 CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_PROGRESS (
 	order_no INT NOT NULL,
@@ -14,23 +16,24 @@ CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG_PROGRESS (
 );
 
 INSERT INTO TB_LAUNDRY_LOG_PROGRESS VALUES
-(1,"QUE",NOW(),NULL);
+(1,"DRY",NOW(),NULL);
 
 INSERT INTO TB_LAUNDRY_LOG_DETAILS VALUES
-(1,"PKN","CCI","REG",1.700),
+(1,"PKN","CCI","REG",3.700),
 (1,"SPR-M","CCI","REG",1.000),
 (1,"BDC-S","CCI","REG",1.000);
 
 INSERT INTO TB_LAUNDRY_LOG VALUES 
-(NULL,NOW(),NOW() + INTERVAL 3 DAY,NULL,"hanip","admin1",50000.00);
+(NULL,NOW(),NOW() + INTERVAL 3 DAY,NULL,"hanip","admin1",100000.00);
 
 INSERT INTO TB_PROGRESS VALUES
 ("DLV","Delivering"),
 ("RDY","Ready"),
 ("DNE","Finished"),
-("DRY","Dry Cleaning"),
+("DRC","Dry Cleaning"),
 ("QEU","Qeueing"),
 ("WSH","Washing"),
+("DRY","Drying"),
 ("IRO","Ironing"),
 ("PCK","Packing");
 
@@ -88,4 +91,7 @@ INSERT INTO TB_GUEST VALUES
 - https://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
 - https://www.w3schools.com/php/php_mysql_delete.asp
 - https://www.tutorialspoint.com/mysql-add-days-to-a-date
+- https://stackoverflow.com/questions/5495913/can-i-use-aggregation-function-last-in-mysql
+- https://stackoverflow.com/questions/28949911/what-does-this-format-means-t000000-000z
+
 */
