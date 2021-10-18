@@ -19,14 +19,17 @@ module.exports = app => {
 			db_password:process.env.DB_PASSWORD
 		});
 	});
+
+//	app.get("/guest/register",..);
+//	app.get("/guest/login",..);
 		
 	app.get("/guest", guest.getallguest);
 	app.get("/guest/:username", guest.geteachguest);
 	app.get("/guest/search/:username", guest.getregexguest);
 
 	app.get("/guest/:username/transaction", guest.getguesttransaction); // (user_transaction)
-//	app.get("/guest/:username/transaction/:order_no/details", guest.);	// (user_transaction_details)
-//	app.get("/guest/:username/transaction/:order_no/progress", guest.);	// (user_progress)
+	app.get("/guest/:username/transaction/:order_no/details", guest.getguesttransaction_details); // (user_transaction_details)
+	app.get("/guest/:username/transaction/:order_no/progress", guest.getguesttransaction_progress);	// (user_progress)
 
 	app.get("/staff", staff.getallstaff);
 	app.get("/staff/:username", staff.geteachstaff);	
