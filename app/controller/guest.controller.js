@@ -54,3 +54,27 @@ exports.getguesttransaction = (req,res) => {
 		}
 	});
 };
+
+exports.getguesttransaction_details = (req,res) => {
+	logs.getLogger("GET").debug(req.hostname+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
+	console.log(req.params);
+	Guest.getguesttransaction_details(req.params.username,req.params.order_no,(err,data) => {
+		if (err) { res.status(500).send({ message: err.message }); }
+		else {
+			console.log("[nodemon] getting guest transaction's details ..."+req.connection.remoteAddress+"\n",data);
+			res.send(data);
+		}
+	});
+};
+
+exports.getguesttransaction_progress = (req,res) => {
+	logs.getLogger("GET").debug(req.hostname+""+req.originalUrl.split("?").shift()+" "+req.connection.remoteAddress);
+	console.log(req.params);
+	Guest.getguesttransaction_progress(req.params.username,req.params.order_no,(err,data) => {
+		if (err) { res.status(500).send({ message: err.message }); }
+		else {
+			console.log("[nodemon] getting guest transaction's progress ..."+req.connection.remoteAddress+"\n",data);
+			res.send(data);
+		}
+	});
+};
