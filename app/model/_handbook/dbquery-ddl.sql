@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS TB_LAUNDRY_LOG (
 	pick_up_item DATE NULL,
 	guest_username VARCHAR(15) NOT NULL,
 	staff_username VARCHAR(15) NOT NULL,
-	payment_nominal DECIMAL(7,2) NOT NULL,
+	payment_nominal DECIMAL(8,2) NOT NULL,
 	FOREIGN KEY (guest_username) REFERENCES TB_GUEST(username),
 	FOREIGN KEY (staff_username) REFERENCES TB_STAFF(username)
 );
@@ -93,7 +93,7 @@ CREATE TRIGGER TR_NEW_PROGRESS
 DELIMITER ;
 
 CREATE OR REPLACE VIEW VW_USER_TRANSACTION_PROGRESS AS
-	SELECT LL.order_no, G.username AS guest_username, G.full_name AS guest_full_name, P.progress_name, LLP.updated_at
+	SELECT LL.order_no, G.username AS guest_username, P.progress_name, LLP.updated_at
 	FROM TB_LAUNDRY_LOG_PROGRESS AS LLP
 	INNER JOIN TB_LAUNDRY_LOG AS LL ON LLP.order_no = LL.order_no
 	INNER JOIN TB_GUEST AS G ON G.username = LL.guest_username
@@ -118,8 +118,8 @@ CREATE OR REPLACE VIEW VW_USER_TRANSACTION AS
 	GROUP BY LL.order_no;
 
 CREATE OR REPLACE VIEW VW_USER_TRANSACTION_DETAILS AS 
-	SELECT LL.order_no, G.username AS guest_username, G.full_name AS guest_full_name, I.item_name, I.item_price,
-	SV.service_name, T.timing_name,
+	SELECT LL.order_no, G.username AS guest_username, I.item_name, I.item_price,
+	LLD.qty, SV.service_name, T.timing_name,
 	CASE
 		WHEN T.timing_id = "REG" && SV.service_id = "CCI" THEN ROUND((I.item_price * LLD.qty * 1.000 * 1.000),2)
 		WHEN T.timing_id = "REG" && SV.service_id = "STR" THEN ROUND((I.item_price * LLD.qty * 1.000 * 0.812),2)
@@ -165,5 +165,6 @@ CREATE OR REPLACE VIEW VW_USER_TRANSACTION_DETAILS AS
 - https://www.w3schools.com/php/php_mysql_delete.asp
 - https://www.tutorialspoint.com/mysql-add-days-to-a-date
 - https://stackoverflow.com/questions/5495913/can-i-use-aggregation-function-last-in-mysql
-- 
+- https://stackoverflow.com/questions/28949911/what-does-this-format-means-t000000-000z
+
 */
