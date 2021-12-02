@@ -1,24 +1,18 @@
 package main
 import (
 	fmt		"fmt"
-	os		"os"
-	log		"log"
-	http	"net/http"
-	env 	"github.com/joho/godotenv"
-	mux		"github.com/gorilla/mux"	
-	_       "github.com/jinzhu/gorm/dialects/mysql"
-	route	"laas/pkg/route"
+	model	"laas-go-2/pkg/model"
+	route	"laas-go-2/pkg/route"
+	util	"laas-go-2/pkg/util"
+	env	    "github.com/joho/godotenv"	
 )
 
 func main() {
 	env.Load();
-	r := mux.NewRouter();
-	route.GuestRoutes(r);
-	http.Handle("/",r);
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"),r));
-	fmt.Println("[laas] running API in localhost:"+os.Getenv("PORT"));
+	fmt.Println("check-hash:",util.GenerateSaltedSHA256("Haspul1963!@","fX4UsJpnDJcLib7W"),"\n");
+
+	db := model.IntiateDB();
+	db.AutoMigrate(&model.Guest{});
+	r  := route.GuestRoute(db);
+	r.Run()
 }
-
-
-// routes -.- controller
-// model -.- config
