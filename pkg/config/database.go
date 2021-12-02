@@ -19,6 +19,10 @@ func InitiateDB() {
   	dsn,err := gorm.Open("mysql",fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",DB_USER,DB_PASSWORD,DB_HOST,DB_PORT,DB_DATABASE));
   	if err != nil {panic(err);}
   	db = dsn;
+  	fmt.Println("[laas] initiating mysql connection");
 }
 
-func ImportDB() *gorm.DB {return db;}
+func ImportDB() *gorm.DB {
+  	fmt.Println("[laas] importing mysql database object");
+	return db;
+}
