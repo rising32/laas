@@ -1,6 +1,6 @@
 package model
 import (
-	time	"time"	
+	fmt		"fmt"
 	gorm 	"github.com/jinzhu/gorm"
 	config	"laas/pkg/config"
 )
@@ -14,8 +14,6 @@ type Guest struct {
 	Address		string		`json:"address"`
 	Postal_code	string		`json:"postal_code"`
 	Activation	int64 		`json:"activation"`
-	Created_at	time.Time 	`json:"created_at"`
-	Updated_at	time.Time 	`json:"updated_at"`	
 }
 
 // ubah model jadi huruf gede
@@ -24,6 +22,7 @@ func init() {
 	config.InitiateDB();
 	db = config.ImportDB();
 	db.AutoMigrate(&Guest{});
+	fmt.Println("[laas] migrating Guest table");
 }
 
 func (g *Guest) AddGuest() *Guest {
