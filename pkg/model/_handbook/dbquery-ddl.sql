@@ -1,25 +1,18 @@
-CREATE DATABASE laas;
-USE laas;
+CREATE DATABASE laas_dev;
+USE laas_dev;
 
-CREATE TABLE IF NOT EXISTS TB_GUEST (
+CREATE TABLE IF NOT EXISTS guests (
 	username VARCHAR(15) NOT NULL PRIMARY KEY,
-	full_name VARCHAR(35) NOT NULL,
-	phone VARCHAR(13) NULL,
+	fullname VARCHAR(35) NOT NULL,
+	phone VARCHAR(13) NOT NULL,
 	address TEXT NULL,
 	postal_code VARCHAR(6) NULL,
-	activation BOOLEAN NOT NULL,
-	created_at DATETIME NOT NULL,
-	updated_at DATETIME NOT NULL
+	activation INT NOT NULL,
+	salt VARCHAR(16) NOT NULL,
+	hash TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS guest (
-	username VARCHAR(15) NOT NULL PRIMARY KEY,
-	full_name VARCHAR(35) NOT NULL,
-	phone VARCHAR(13) NULL,
-	address TEXT NULL,
-	postal_code VARCHAR(6) NULL,
-	activation BOOLEAN NOT NULL
-);
+-------- | REVISI LAAS | --------
 
 CREATE TABLE IF NOT EXISTS TB_STAFF (
 	username VARCHAR(15) NOT NULL PRIMARY KEY,
