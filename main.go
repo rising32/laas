@@ -1,5 +1,6 @@
 package main
 import (
+	fmt		"fmt"
 	os		"os"
 	log		"log"
 	http	"net/http"
@@ -15,6 +16,7 @@ func main() {
 	route.GuestRoutes(r);
 	http.Handle("/",r);
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"),r));
+	fmt.Println("[laas] running API in localhost:"+os.Getenv("PORT"));
 }
 
 
