@@ -1,64 +1,54 @@
 package controller
 import (
+//	fmt		"fmt"
 	http	"net/http"
-	json	"encoding/json"
-	mux		"github.com/gorilla/mux"	
-	lib 	"laas/pkg/lib"
-	model	"laas/pkg/model"
+	model	"laas-go-2/pkg/model"
+	util	"laas-go-2/pkg/util"	
+	gin	    "github.com/gin-gonic/gin"
+    gorm	"github.com/jinzhu/gorm"	
 )
 
-var NewGuest model.Guest;
-
-func GetGuest(w http.ResponseWriter, r *http.Request) {
-	newGuest := model.GetGuest();
-	res,_    := json.Marshal(newGuest);
-	w.Header().Set("Content-Type","pkglication/json");
-	w.WriteHeader(http.StatusOK);
-	w.Write(res);
+type AddGuestBody struct {
+	Username	string	`json:"username"`
+	Fullname	string	`json:"fullname"`	
+	Phone		string	`json:"phone"`
+	Address		string	`json:"address"`
+	PostalCode	string	`json:"postal_code"`
+	Activation	int64	`json:"activation"`
+	Password 	string	`json:"password"`
 }
 
-func GetGuestByUsername(w http.ResponseWriter, r *http.Request) {
-	vars       := mux.Vars(r);
-	username   := vars["username"];
-	newGuest,_ := model.GetGuestByUsername(username);
-	res,_      := json.Marshal(newGuest);
-	w.Header().Set("Content-Type","pkglication/json");
-	w.WriteHeader(http.StatusOK);
-	w.Write(res);
+func GetGuest(c *gin.Context) {
+	var guests []model.Guest;	
+	db := c.MustGet("db").(*gorm.DB);
+	db.Find(&guests);
+	c.JSON(http.StatusOK,gin.H{"data":guests});
 }
 
-func AddGuest(w http.ResponseWriter, r *http.Request) {
-	addGuest := &model.Guest{}
-	lib.ParseBody(r,addGuest);
-	b        := addGuest.AddGuest();
-	res,_    := json.Marshal(b);
-	w.WriteHeader(http.StatusOK);
-
-	w.Write(res);	
+func GetGuestByUsername(c *gin.Context) {
+	var guest []model.Guest;
+	db := c.MustGet("db").(*gorm.DB);
+	if err := db.Where("username = ?",c.Param("username")).First(&guest).Error; err != nil {
+		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
+		return;
+	}
+	if len(guest) < 1 {
+		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
+		return;
+	}
+	c.JSON(http.StatusOK,gin.H{"data":guest});	
 }
 
-func DeleteGuest(w http.ResponseWriter, r *http.Request) {
-	vars     := mux.Vars(r);
-	username := vars["username"];
-	newGuest := model.DeleteGuest(username);
-	res,_    := json.Marshal(newGuest);
-	w.Header().Set("Content-Type","pkglication/json");
-	w.WriteHeader(http.StatusOK);
-	w.Write(res);	
+func AddGuest(c *gin.Context) {
+	var body AddGuestBody;
+    if err := c.ShouldBindJSON(&body); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+    get_salt := util.GenerateSalt(16);
+    get_hash := util.GenerateSaltedSHA256(string(body.Password),get_salt);
+    new_guest := model.Guest{Username: body.Username,Fullname: body.Fullname,Phone: body.Phone,Address: body.Address,PostalCode: body.PostalCode,Activation: body.Activation,Salt: get_salt,Hash: get_hash};
+	db := c.MustGet("db").(*gorm.DB);
+	db.Create(&new_guest);
+	c.JSON(http.StatusOK,gin.H{"data":new_guest});	
 }
-
-func UpdateGuest(w http.ResponseWriter, r *http.Request) {
-	var addGuest = &model.Guest{}
-	lib.ParseBody(r,addGuest);	
-	vars        := mux.Vars(r);
-	username    := vars["username"];	
-	newGuest,db := model.GetGuestByUsername(username);
-	if addGuest.Full_name != "" {newGuest.Full_name = addGuest.Full_name;}
-	db.Save(&addGuest);
-	res,_       := json.Marshal(addGuest);
-	w.Header().Set("Content-Type","pkglication/json");
-	w.WriteHeader(http.StatusOK);
-	w.Write(res);	
-}
-
-// ubah model jadi huruf gede
