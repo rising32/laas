@@ -9,6 +9,7 @@ DB_PASSWORD=[password]
 DB_DATABASE=[db_name]
 DB_PORT=[db_port]
 PORT=[app_port]
+SECRET_KEY=[jwt_secret_key]
 ```
 
 ``` bash
@@ -24,6 +25,7 @@ PORT=[app_port]
 │  │       │   ├── /password
 │  │       │   └── /phone
 │  │       ├── /close
+│  │       ├── /open
 │  │       ├── /delete
 │  │       └── ..
 │  └── ..
