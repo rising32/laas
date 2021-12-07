@@ -9,8 +9,8 @@ import (
 
 func main() {
 	env.Load();
-//	fmt.Println("check-hash:",util.GenerateSaltedSHA256("Haspul1963!@","fX4UsJpnDJcLib7W"),"\n");
-	fmt.Println("check-hash:",util.GenerateSaltedSHA256("irsyadndu1ABC","14qJzz7ADHxtJRK4"),"\n");
+	fmt.Println("check-hash:",util.GenerateSaltedSHA256("haspul1963","sJw2Wzuq6ZkJBpG0"),"\n");
+//	fmt.Println("check-hash:",util.GenerateSaltedSHA256("irsyadndu1ABC","14qJzz7ADHxtJRK4"),"\n");
 
 	db := model.IntiateDB();
 	db.AutoMigrate(&model.Guest{});
