@@ -16,7 +16,7 @@ func GenerateSalt(n int) string {
 }
 
 func GenerateSaltedSHA256(word string, salt string) string { // key-stretching salt
-	var final str.Builder
+	var final str.Builder;
 	get_word := []rune(word); get_salt := []rune(salt);
 	x := get_word; y := get_salt
 	if len(get_salt) > len(get_word) {x = get_salt; y = get_word;}
