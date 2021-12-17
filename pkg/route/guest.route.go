@@ -5,8 +5,7 @@ import (
 	gorm		"github.com/jinzhu/gorm"
 )
 
-func GuestRoute(db *gorm.DB) *gin.Engine {
-	r := gin.Default();
+func GuestRoute(db *gorm.DB, r *gin.Engine) *gin.Engine {
 	r.Use(func(c *gin.Context) {
 		c.Set("db",db);
 	})
