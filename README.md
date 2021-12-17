@@ -1,8 +1,12 @@
-# laas
-laundry-as-a-service ( laas ) is an opensource API that are focused on task queue, scheduling / reminder, and transaction management on a laundry business model. Stock database migration are also available in ```laas/pkg/model/_handbook/dbdump.sql``` to provide an easier deployment aspect.
+# LaaS // (n). Laundry as a Service
+**LaaS** is an opensource API that are focused on task queue, scheduling / reminder, and transaction management on a laundry business model. LaaS will be compatible soon with ```laas-client``` that are hosted here in hotpotcookie's github repos, which provide an easier full-stack infrastucture to be used locally. On the client side, it will be written in ```Vanilla JS```
 
+**LaaS** use RDBMS by MySQL version 8.0.27 as its database platform, which contains triggers for certain actions. It will also be using views as for the client-side, so the privacy are still maintained not hardcoded to the responses. Stock database migration are available in ```laas/pkg/model/_handbook``` to provide an easier management aspect.
+
+Here are some key overviews that will help you get started, More details will be documented in the ```doc``` entry point, so it can be separated from the API. Hope it helps for you, cheers 👊
+
+## Environment Variables
 ``` bash
-# environment variables
 DB_HOST=[host]
 DB_USER=[user]
 DB_PASSWORD=[password]
@@ -11,29 +15,37 @@ DB_PORT=[db_port]
 PORT=[app_port]
 SECRET_KEY=[jwt_secret_key]
 ```
+## Dependencies
 ```bash
-# external modules' dependencies
-- github.com/joho/godotenv
-- github.com/gin-gonic/gin
-- github.com/go-sql-driver/mysql
-- github.com/jinzhu/gorm
+github.com/joho/godotenv
+github.com/gin-gonic/gin
+github.com/go-sql-driver/mysql
+github.com/jinzhu/gorm
 ```
+## Endpoints
 ``` bash
-# api's endpoints
-./api
-├─ /user
-│  ├── /guest
-│  │   ├── /add
-│  │   ├── /show
-│  │   └── /profile/:username
-│  │       ├── /update
-│  │       │   ├── /address
-│  │       │   ├── /password
-│  │       │   └── /phone
-│  │       ├── /close
-│  │       ├── /open
-│  │       ├── /delete
-│  │       └── ..
-│  └── ..
-└── ..
+.
+├── /
+├── /api
+│   ├── /user
+│   │   ├── /guest
+│   │   │   ├── /add
+│   │   │   ├── /show
+│   │   │   └── /profile/:username
+│   │   │       ├── /update
+│   │   │       │   ├── /address
+│   │   │       │   ├── /password
+│   │   │       │   └── /phone
+│   │   │       ├── /close
+│   │   │       ├── /open
+│   │   │       ├── /delete
+│   │   │       └── ..
+│   │   └── ..
+│   └── ..
+├── /doc
+│   ├── /installation
+│   └── ..
+└── ..	
 ```
+## Contributions
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate. 👏
