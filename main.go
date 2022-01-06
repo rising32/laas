@@ -1,7 +1,6 @@
 package main
 import (
 	fmt		"fmt"
-    http	"net/http"	
 	model	"laas-go-2/pkg/model"
 	route	"laas-go-2/pkg/route"
 	util	"laas-go-2/pkg/util"
@@ -11,8 +10,7 @@ import (
 
 func main() {
 	env.Load();
-	fmt.Println("check-hash:",util.GenerateSaltedSHA256("haspul1963","k72zBr3GrXEcks64"),"\n");
-//	fmt.Println("check-hash:",util.GenerateSaltedSHA256("irsyadndu1ABC","14qJzz7ADHxtJRK4"),"\n");
+	fmt.Println("check-hash:",util.GenerateSaltedSHA256("irsyadota","8CwqhcBnoA6DLQ0r"),"\n");
 
 	db := model.IntiateDB();
 	db.AutoMigrate(&model.Guest{});
@@ -20,13 +18,7 @@ func main() {
 	r := gin.Default();	
 	r.LoadHTMLGlob("templates/*.html");
 
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK,"laas.md.html",nil)
-	});
+	route.DefaultDocRoute(r);
 	route.GuestRoute(db,r);
-
-
 	r.Run()
 }
-
-// main route jadiin display tree endpoint

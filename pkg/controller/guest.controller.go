@@ -1,6 +1,8 @@
 package controller
 import (
 //	time	"time"
+//	strconv	"strconv"
+//	fmt		"fmt"
 	http	"net/http"
 	model	"laas-go-2/pkg/model"
 	util	"laas-go-2/pkg/util"	
@@ -8,7 +10,7 @@ import (
     gorm	"github.com/jinzhu/gorm"	
 )
 
-type AddGuestBody struct {
+type ModelGuestBody struct {
 	Username	string	`json:"username"`
 	Fullname	string	`json:"fullname"`	
 	Phone		string	`json:"phone"`
@@ -16,16 +18,6 @@ type AddGuestBody struct {
 	PostalCode	string	`json:"postal_code"`
 	Activation	int64	`json:"activation"`
 	Password 	string	`json:"password"`
-}
-type UpdateGuestAddressBody struct {
-	Address		string	`json:"address"`
-	PostalCode	string	`json:"postal_code"`	
-}
-type UpdateGuestPasswordBody struct {
-	Password 	string	`json:"password"`	
-}
-type UpdateGuestPhoneBody struct {
-	Phone		string	`json:"phone"`	
 }
 
 func GetGuest(c *gin.Context) {
@@ -50,7 +42,7 @@ func GetGuestByUsername(c *gin.Context) {
 }
 
 func AddGuest(c *gin.Context) {
-	var body AddGuestBody;
+	var body ModelGuestBody;
     if err := c.ShouldBindJSON(&body); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
@@ -70,7 +62,7 @@ func UpdateGuestAddress(c *gin.Context) {
 		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
 		return;
 	}
-	var body UpdateGuestAddressBody;
+	var body ModelGuestBody;
 	if err := c.ShouldBindJSON(&body); err != nil {
 	    c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	    return
@@ -87,7 +79,7 @@ func UpdateGuestPassword(c *gin.Context) {
 		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
 		return;
 	}
-	var body UpdateGuestPasswordBody;
+	var body ModelGuestBody;
 	if err := c.ShouldBindJSON(&body); err != nil {
 	    c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	    return
@@ -106,7 +98,7 @@ func UpdateGuestPhone(c *gin.Context) {
 		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
 		return;
 	}
-	var body UpdateGuestPhoneBody;
+	var body ModelGuestBody;
 	if err := c.ShouldBindJSON(&body); err != nil {
 	    c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	    return
@@ -115,3 +107,31 @@ func UpdateGuestPhone(c *gin.Context) {
 	db.Model(&guest).Where("username = ?",c.Param("username")).Updates(update_guest);
 	c.JSON(http.StatusOK,gin.H{"data":guest});	
 }
+
+func CloseGuestAccount(c *gin.Context) {
+	var guest model.Guest;
+	db := c.MustGet("db").(*gorm.DB);
+	if err := db.Where("username = ?",c.Param("username")).First(&guest).Error; err != nil {
+		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
+		return;
+	}
+	db.Model(&guest).Where("username = ? AND activation = 1",c.Param("username")).Updates(map[string]interface{}{
+		"activation":0});
+	c.JSON(http.StatusOK,gin.H{"data":guest});		
+}
+
+func OpenGuestAccount(c *gin.Context) {
+	var guest model.Guest;
+	db := c.MustGet("db").(*gorm.DB);
+	if err := db.Where("username = ?",c.Param("username")).First(&guest).Error; err != nil {
+		c.JSON(http.StatusBadRequest,gin.H{"error":"Guest is not available"});
+		return;
+	}
+	db.Model(&guest).Where("username = ? AND activation = 0",c.Param("username")).Updates(map[string]interface{}{
+		"activation":1});
+	c.JSON(http.StatusOK,gin.H{"data":guest});		
+}
+
+
+// open & delete coming soon
+// masuk ke staff model + endpoint
