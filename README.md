@@ -31,14 +31,21 @@ github.com/jinzhu/gorm
 │   │   ├── /guest
 │   │   │   ├── /add
 │   │   │   ├── /show
-│   │   │   └── /profile/:username
+│   │   │   └── /:username
 │   │   │       ├── /update
-│   │   │       │   ├── /address
-│   │   │       │   ├── /password
-│   │   │       │   └── /phone
+│   │   │       │   ├── /profile
+│   │   │       │   └── /password
 │   │   │       ├── /close
 │   │   │       ├── /open
 │   │   │       ├── /delete
+│   │   │       └── ..
+│   │   ├── /staff
+│   │   │   ├── /add
+│   │   │   ├── /show
+│   │   │   └── /:username
+│   │   │       ├── /update
+│   │   │       │   ├── /profile
+│   │   │       │   └── /password
 │   │   │       └── ..
 │   │   └── ..
 │   └── ..
