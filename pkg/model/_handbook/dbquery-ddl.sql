@@ -12,6 +12,19 @@ CREATE TABLE IF NOT EXISTS guests (
 	hash TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS staffs (
+	username VARCHAR(15) NOT NULL PRIMARY KEY,
+	fullname VARCHAR(35) NOT NULL,
+	email VARCHAR(25) NOT NULL,	
+	phone VARCHAR(13) NOT NULL,
+	address TEXT NOT NULL,
+	postal_code VARCHAR(6) NOT NULL,
+	level INT NOT NULL,
+	activation INT NOT NULL,
+	salt VARCHAR(16) NOT NULL,
+	hash TEXT NOT NULL	
+);
+
 -------- | REVISI LAAS | --------
 
 CREATE TABLE IF NOT EXISTS TB_STAFF (
