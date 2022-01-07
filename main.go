@@ -14,11 +14,14 @@ func main() {
 
 	db := model.IntiateDB();
 	db.AutoMigrate(&model.Guest{});
+	db.AutoMigrate(&model.Staff{});
 
 	r := gin.Default();	
 	r.LoadHTMLGlob("templates/*.html");
 
 	route.DefaultDocRoute(r);
 	route.GuestRoute(db,r);
+	route.StaffRoute(db,r);
+
 	r.Run()
 }
